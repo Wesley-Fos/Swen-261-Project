@@ -1,0 +1,32 @@
+nav {
+    background-color: black;
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    max-width: 100%;
+}
+
+#cart {
+    align-self: center;
+    margin-left: auto;
+    padding: 10px 10px;
+    min-height: min-content;
+}
+
+a {
+    background-color: black;
+    font-size: 1.2rem;
+    padding: 25px;
+    color: #fff;
+    text-decoration: none;
+    text-align: center;
+}
+
+a:hover{
+    background-color: gold;
+}
+
+img {
+    float: left;
+    margin: 0.5rem 0.5rem;
+}

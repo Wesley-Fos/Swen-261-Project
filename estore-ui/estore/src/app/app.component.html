@@ -1,0 +1,13 @@
+<!--Layout changes slightly based on who is logged in currently-->
+<nav>
+    <img src="assets\media\logo.png" width = "70" height = "70"/>
+    <a routerLink="/home">Home</a>
+    <a routerLink="/login" *ngIf="!currentUser">Login</a>
+    
+    <a *ngIf="currentUser && !isAdmin">{{currentUser}}</a>
+    <a *ngIf="isAdmin" routerLink="/admin">Admin DashBoard</a>
+    <a (click)="logout()" routerLink="/home" *ngIf="currentUser">Logout</a>
+    <a routerLink="/cart" id="cart"  *ngIf="currentUser && !isAdmin"><img src="assets\media\cart.png"/></a>
+    <a routerLink="/login" id="cart"  *ngIf="!currentUser"><img src="assets\media\cart.png"/></a>
+</nav>
+<router-outlet></router-outlet>

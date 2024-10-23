@@ -1,0 +1,113 @@
+<div class="entire" *ngIf="jersey;else jersey_not_found">
+  <div class="container">
+    <div class="title-area">
+      <h1>Boston Bruins {{jersey.playerName}} #{{jersey.playerNumber}} {{jersey.color | titlecase}} Jersey</h1>
+    </div>
+    <div class="picture">
+      <img src="{{jersey.imagePath}}" id="jerseyImage" alt="insert full-sized image here">
+    </div>
+    <div class="description">
+      <div>
+        <h3 *ngIf="!isAdmin">Boston Bruins {{jersey.playerName}} #{{jersey.playerNumber}} {{jersey.color | titlecase}} Jersey</h3>
+        <ul *ngIf="!isAdmin">
+          <li *ngIf="jersey.avgReview != 0; else no_rating">Average Rating: {{jersey.avgReview}}</li>
+          <li>Size: {{jersey.size}}</li>
+          <li>Price: ${{jersey.price}}</li>
+          <li *ngIf="jersey.quantity > 0">{{jersey.quantity}} in stock</li>
+          <li *ngIf="jersey.quantity <= 0">OUT OF STOCK</li>
+        </ul>
+        <!--This section below is only shown to admin for editing-->
+        <div class="adminEdit" *ngIf="isAdmin">
+          <h3>Edit Jersey Values:</h3>
+          <input [(ngModel)]="jersey.playerName" placeholder="Player name">
+          <input [(ngModel)]="jersey.playerNumber" placeholder="Player number">
+          <select [(ngModel)]="jersey.color">
+            <option value="" selected disabled>Color</option>
+            <option value="Home">Home</option>
+            <option value="Away">Away</option>
+          </select>
+
+          <div></div>
+
+          <select [(ngModel)]="jersey.size">
+            <option value="" selected disabled>Size</option>
+            <option value="XS">XS</option>
+            <option value="S">S</option>
+            <option value="M">M</option>
+            <option value="L">L</option>
+            <option value="XL">XL</option>
+            <option value="XXL">XXL</option>
+          </select>
+          <input [(ngModel)]="jersey.price" placeholder="Price">
+          <input [(ngModel)]="jersey.quantity" placeholder="Quantity">
+          <input [(ngModel)]="jersey.imagePath" placeholder="Path to image">
+        </div>
+        <!--This section above is only shown to admin for editing-->
+        
+      </div>
+      <button type="button" *ngIf="currentUser && currentUser.toLowerCase() != 'admin' && jersey.quantity > 0" (click)="addToShoppingCart()">Add to Cart</button>
+      <button type="button" *ngIf="!currentUser && jersey.quantity > 0" routerLink="/login">Add to Cart</button>
+      <button type="button" (click)="goBack()">Go Back</button>
+      <button type="button" *ngIf="isAdmin" (click)="save()">Save</button>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <button type="button" *ngIf="isAdmin" (click)="deleteJersey()">DELETE</button>
+    </div>
+
+    <div class="reviews">
+      <h3>Jersey Reviews:</h3>
+
+      <div class="addReview" *ngIf="currentUser != '';else not_logged_in">
+        <label for="new-reviewRating">Rating: </label>
+        <select #jerseyReviewRating id="new-reviewRating"><option value="5">5</option><option value="4">4</option><option value="3">3</option><option value="2">2</option><option value="1">1</option></select>
+        <label for="new-review">Enter your review: </label>
+        <textarea #jerseyReview id="new-review" rows="10" cols="100"></textarea>
+        <!-- (click) passes input value to add() and then clears the input -->
+        <button type="button" class="reviewBtn spacingBtn" (click)="add(jersey, currentUser, jerseyReviewRating.value, jerseyReview.value); jerseyReview.value=''">
+          Add Review
+        </button>
+      </div>
+
+      <div class="reviewHolder" *ngIf="jersey.reviews.length>0;else no_reviews">
+        <div class="review" *ngFor="let reviews of jersey.reviews">
+          <div class="review-title">
+            <h4>{{reviews[0]}} - {{reviews[1]}}/5</h4>
+
+            <button class="reviewBtn deleteBtn" *ngIf="isAdmin || currentUser.toLowerCase() == reviews[0].toLowerCase()" (click)="deleteJerseyReview(jersey, reviews[0], reviews[1], reviews[2])" type="button">Delete</button>
+
+          </div>
+          <p>{{reviews[2]}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #jersey_not_found>
+  <div class="title-area">
+    <h1>The specified jersey does not exist.</h1>
+  </div>
+</ng-template>
+
+<ng-template #no_reviews>
+  <div class="reviews">
+    <h3>No reviews found!</h3>
+    <!-- add adding reviews here -->
+  </div>
+</ng-template>
+
+<ng-template #not_logged_in>
+  <div class="addReview">
+    <h3>Log-In in order to leave a review!</h3>
+    <!-- (click) passes input value to add() and then clears the input -->
+  </div>
+</ng-template>
+
+<ng-template #no_rating>
+  <li>Average Rating: Unreviewed</li>
+</ng-template>
+

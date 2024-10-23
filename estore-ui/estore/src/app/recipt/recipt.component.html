@@ -1,0 +1,18 @@
+<h2>{{_user}}'s Checkout Recipt</h2>
+
+
+<ul  id="jerseys">
+    <br>
+    <h3> {{_user}}'s Cart:</h3>
+    <br>
+    <li *ngFor="let jersey of jerseysInfo">
+        <div>
+            <p>Boston Bruins {{jersey.playerName}} {{jersey.color}} Jersey</p>
+            <p>${{jersey.price}}</p>
+            <p>in cart: {{_items[jerseysInfo.indexOf(jersey)][1]}}</p>
+            <br>
+            <br>
+        </div>
+    </li>
+    <h3>Total: {{_price.toFixed(2)}}</h3>
+</ul>

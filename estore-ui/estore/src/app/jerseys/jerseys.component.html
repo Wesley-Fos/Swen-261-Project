@@ -1,0 +1,62 @@
+<input id="search" [(ngModel)]="filterText" placeholder="Search for a Jersey">
+<div id="searchElements">
+<form>
+    <label for="size">Size:</label>
+    <select name="Size Filter" id="size" [(ngModel)]="filterSize">
+        <option value="XS">XS</option>
+        <option value="S">S</option>
+        <option value="M">M</option>
+        <option value="L">L</option>
+        <option value="XL">XL</option>
+        <option value="XXL">XXL</option>
+        <option value=""> </option>
+    </select>
+
+    <label for="minReview">Review Minimum:</label>
+    <select name="Review Filter" id="minReview" [(ngModel)]="minReview">
+        <option value="1">1★+</option>
+        <option value="2">2★+</option>
+        <option value="3">3★+</option>
+        <option value="4">4★+</option>
+        <option value="5">5★+</option>
+        <option value="0"> </option>
+    </select>
+</form>
+
+<div id="price">
+    <label for="price">Price range</label>
+    <input type="number" [(ngModel)]="filterRange0" value="" id="range0">
+    <a>-</a>
+    <input type="number" [(ngModel)]="filterRange1" value="" id="range1">
+</div>
+
+
+<label for="JerseyNum">Jersey Number:</label>
+<input id="jerseyNum" type="number" [(ngModel)]="filterNumber" value="">
+<br>
+<button (click)="clear()">Clear</button>
+
+</div>
+
+<ul  id="jerseys">
+    <li *ngFor="let jersey of filteredJerseys">
+        <div class="jerseyinfo" routerLink="/jersey/{{jersey.id}}">
+            <img src="{{jersey.imagePath}}" id="jerseyImage">
+
+            <p class="price">${{jersey.price}}</p>
+            <h4>{{jersey.playerName}}</h4>
+            <p *ngIf="jersey.avgReview != 0; else no_reviews"> ★ {{jersey.avgReview}}</p>
+            <p>{{jersey.color}} Jersey - Size: {{jersey.size}}</p>
+            <p *ngIf="jersey.quantity > 0; else out_of_stock"><span class="bold">{{jersey.quantity}}</span> left in stock</p>
+            <br/>
+        </div>
+    </li>
+</ul>
+
+<ng-template #no_reviews>
+    <p>Unreviewed</p>
+</ng-template>
+
+<ng-template #out_of_stock>
+    <p class="bold">OUT OF STOCK</p>
+  </ng-template>

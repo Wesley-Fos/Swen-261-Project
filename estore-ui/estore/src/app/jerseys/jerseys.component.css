@@ -1,0 +1,64 @@
+#search {
+  margin-top: 2em;
+  margin-left: 2em;
+  height: 30px;
+  width: 500px;
+}
+
+#searchElements{
+    padding: 2em 2em 2em 2em;
+}
+
+#size{
+    margin-bottom: 1em;
+}
+#price{
+    margin-bottom: 1em;
+}
+#jerseyNum{
+    margin-bottom: 1em;
+}
+
+#jerseys {
+    display: flex;
+    flex-direction: row;
+    list-style-type: none;
+    flex-wrap: wrap;
+    max-width: 2000px;
+}
+
+#jerseyImage {
+    max-width: 256px;
+    max-height: 320px;
+    min-width: 256px;
+    min-height: 320px;
+    border-radius: 5px;
+}
+
+li {
+    max-width: 256px;
+    text-align: center;
+    padding: .5%;
+}
+
+.jerseyinfo{
+    cursor: pointer;
+    border: 0px solid grey; 
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+    border-radius: 5px;
+}
+
+.bold{
+    font-weight: bold;
+}
+
+.price{
+    font-size: x-large;
+}
+
+form select {
+    margin-right: 15px;
+}
+form label {
+    margin-right: 2px;
+}

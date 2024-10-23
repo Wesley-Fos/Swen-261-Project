@@ -1,0 +1,163 @@
+label {
+  color: #435960;
+  font-weight: bold;
+}
+
+.container {  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: .25fr 1fr 1fr;
+  gap: 1em 1em;
+  grid-auto-flow: row;
+  grid-template-areas:
+    "title-area title-area title-area"
+    "picture picture description"
+    "review review review";
+}
+
+.title-area { grid-area: title-area; }
+
+.picture {
+  grid-area: picture;
+  outline: 3px dashed black;
+  padding: 5px;
+  margin: auto;
+}
+#jerseyImage {
+  max-width: 580px;
+  max-height: 640px;
+  min-width: 580px;
+  min-height: 640px;
+  border-radius: 5px;
+}
+
+.description { grid-area: description; }
+
+.entire {
+  margin: auto;
+  padding: 10px;
+  width: 75%;
+}
+
+ul {
+  font-size: 20px;
+}
+
+h1 {
+  padding: 1em;
+  text-align: center;
+}
+
+input, select {
+  font-size: 1em;
+  padding: .5rem;
+}
+button {
+  margin-top: 20px;
+  margin-right: .5rem;
+  background-color: #eee;
+  padding: 1rem;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+button:hover {
+  background-color: #cfd8dc;
+}
+button:disabled {
+  background-color: #eee;
+  color: #ccc;
+  cursor: auto;
+}
+
+text {
+  color: #435960;
+}
+
+
+.adminEdit {
+  display: flex;
+  flex-direction: column;
+}
+
+.reviews{
+  grid-area: review;
+  width: 75%;
+  padding: 3%;
+}
+
+.review{
+  padding: 3%;
+  border: 0px solid grey; 
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+  border-radius: 5px;
+  margin-top: 2%;
+  width: 43%;
+  transition: 75ms;
+}
+
+.review-title{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.reviewBtn{
+  font-family: "Roboto", sans-serif;
+  text-transform: uppercase;
+  outline: 0;
+  background-color: gold;;
+  width: 100%;
+  border: 0;
+  border-radius: 0px;
+  padding: 15px;
+  color: black;
+  font-size: 14px;
+  -webkit-transition: all 0.3 ease;
+  transition: all 0.3 ease;
+  cursor: pointer;
+}
+
+.deleteBtn{
+  margin: auto 0px;
+  width: 25%;
+}
+
+.addReview{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 2%;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+  border-radius: 5px;
+}
+
+.addReview label, .spacingBtn{
+  margin-top: 2%;
+}
+
+
+.checked {
+  color: orange;
+}
+
+textarea{
+  resize: none;
+  font-family: "Roboto", sans-serif;
+  outline: 0;
+  background: #f2f2f2;
+  width: 100%;
+  border: 0;
+  margin: 0 0 15px;
+  padding: 15px;
+  box-sizing: border-box;
+  font-size: 14px;
+}
+
+.reviewHolder{
+  display:flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}

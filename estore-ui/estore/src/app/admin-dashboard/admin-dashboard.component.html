@@ -1,0 +1,46 @@
+<h2>All Jerseys</h2>
+<ul class="jerseys">
+    <li *ngFor="let jersey of jerseys">
+        <a routerLink="../jersey/{{jersey.id}}">{{jersey.playerName}}</a>
+        <button (click)="delete(jersey)">Delete</button>
+        <button routerLink="../jersey/{{jersey.id}}">Edit</button>
+    </li>
+</ul>
+
+<h2>Add New Jersey</h2>
+<div class="newJerseyForm">
+    <label for="new-jersey">Player name: </label>
+    <input id="new-jersey" #playerName />
+
+    <label for="new-jersey">Player number: </label>
+    <input id="new-jersey" #playerNumber />
+
+    <label for="new-jersey">Color: </label>
+    <select id="new-jersey" #color>
+        <option value="" selected disabled></option>
+        <option value="Home">Home</option>
+        <option value="Away">Away</option>
+    </select>
+
+    <label for="new-jersey">Size: </label>
+    <select id="new-jersey" #size>
+        <option value="" selected disabled></option>
+        <option value="XS">XS</option>
+        <option value="S">S</option>
+        <option value="M">M</option>
+        <option value="L">L</option>
+        <option value="XL">XL</option>
+        <option value="XXL">XXL</option>
+    </select>
+
+    <label for="new-jersey">Price: </label>
+    <input id="new-jersey" #price />
+
+    <label for="new-jersey">Quantity: </label>
+    <input id="new-jersey" #quantity />
+
+    <label for="new-jersey">Image file: </label>
+    <input id="new-jersey" #imagePath />
+
+    <button type="button" (click)="add(playerName.value, playerNumber.value, color.value, size.value, price.value, quantity.value, imagePath.value); playerName.value = ''; playerNumber.value = ''; color.value = ''; size.value = ''; price.value = ''; quantity.value = ''; imagePath.value = ''">Submit</button>
+</div>

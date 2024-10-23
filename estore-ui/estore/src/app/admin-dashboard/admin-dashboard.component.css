@@ -1,0 +1,38 @@
+.newJerseyForm {
+    display: flex;
+    flex-direction: column;
+    padding-left: 26rem;
+}
+
+.newJerseyForm input, select {
+    max-width: 25em;
+    margin-bottom: 10px;
+}
+
+.newJerseyForm button {
+    max-width: 5em;
+    margin-bottom: 5rem;
+}
+
+.jerseys {
+    list-style-type: none;
+    padding-left: 26rem;
+}
+
+.jerseys li {
+    padding: 10px 0px 10px 0px;
+}
+
+a {
+    color: black;
+    padding-right: 10px;
+    text-decoration: none;
+}
+
+h2 {
+    padding-left: 25rem;
+}
+
+button {
+    margin-right: 5px;
+}
